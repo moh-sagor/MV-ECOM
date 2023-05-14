@@ -31,10 +31,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth', 'role:admin')->group(function () {
     Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::post('admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+    Route::get('admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 });
-Route::middleware('auth', 'role:admin')->group(function () {
-    Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-});
+
+Route::get('admin/login', [AdminController::class, 'login'])->name('admin.login');
+
 ///////////////////////////////////////////////////
 // Vendor Routes//
 ///////////////////////////////////////////////////
@@ -42,15 +44,6 @@ Route::middleware('auth', 'role:admin')->group(function () {
 Route::middleware('auth', 'role:vendor')->group(function () {
     Route::get('vendor/dashboard', [VendorController::class, 'index'])->name('vendor.dashboard');
 });
-Route::middleware('auth', 'role:vendor')->group(function () {
-    Route::get('vendor/dashboard', [VendorController::class, 'index'])->name('vendor.dashboard');
-});
-
-
-
-
-
-
 
 
 
