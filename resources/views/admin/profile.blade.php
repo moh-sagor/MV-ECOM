@@ -72,7 +72,7 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
-                            <form action="" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.update.profile')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                             <div class="row mb-3">
                                 <div class="col-sm-3">
@@ -126,7 +126,7 @@
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="button" class="btn btn-primary px-4" value="Save Changes" />
+                                    <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
                                 </div>
                             </div>
                         </form>
@@ -139,12 +139,14 @@
 </div>
 
 <script>
+    'use strict'
     jQuery(document).ready(function(){
-        jQuery('.image').change(function(){
-            let file = new FileReader();
-            file.onload = function(e) => {
-                $('#image').attr('src', e.target.result);
+        jQuery('.image').change(function(e){
+            var filereader = new FileReader();
+            filereader.onload = function(e) {
+                jQuery('#image').attr('src', e.target.result);
             }
+            filereader.readAsDataURL(e.target.files['0']);
     })
     })
 </script>

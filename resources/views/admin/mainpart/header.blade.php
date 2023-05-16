@@ -110,16 +110,16 @@
                                     </div>
                                 </a>
                                 <a class="dropdown-item" href="javascript:;">
-    <div class="d-flex align-items-center">
-    <div class="notify bg-light-info text-info"><i class="bx bx-home-circle"></i>
-    </div>
-    <div class="flex-grow-1">
-        <h6 class="msg-name">New Product Approved <span
-    class="msg-time float-end">2 hrs ago</span></h6>
-        <p class="msg-info">Your new product has approved</p>
-    </div>
-    </div>
-    </a>
+                                <div class="d-flex align-items-center">
+                                    <div class="notify bg-light-info text-info"><i class="bx bx-home-circle"></i>
+                                     </div>
+                                         <div class="flex-grow-1">
+                                    <h6 class="msg-name">New Product Approved <span
+                                        class="msg-time float-end">2 hrs ago</span></h6>
+                                        <p class="msg-info">Your new product has approved</p>
+                                        </div>
+                                         </div>
+                                        </a>
                                 <a class="dropdown-item" href="javascript:;">
                                     <div class="d-flex align-items-center">
                                         <div class="notify bg-light-danger text-danger"><i class="bx bx-message-detail"></i>
@@ -326,8 +326,8 @@
                 <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{{!empty($adminInfo->profile_pic) ? asset('uploads/admin/'.$adminInfo->profile_pic):asset('uploads/admin/admin.png') }}" class="user-img" alt="user avatar">
                     <div class="user-info ps-3">
-                        <p class="user-name mb-0">{{$adminInfo->name}}</p>
-                        <p class="designattion mb-0">{{$adminInfo->email}}</p>
+                        <p class="user-name mb-0">{{Auth::user()->name}}</p>
+                        <p class="designattion mb-0">{{Auth::user()->email}}</p>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
