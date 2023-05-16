@@ -85,6 +85,31 @@
 	  <script src="{{asset('backend')}}/assets/js/index.js"></script>
 	<!--app JS-->
 	<script src="{{asset('backend')}}/assets/js/app.js"></script>
+
+	<script>
+		@if(Session::has('message'))
+			var type = "{{ Session::get('type') }}";
+			var message = "{{ Session::get('message') }}";
+	
+			switch (type) {
+				case 'success':
+					toastr.success(message);
+					break;
+				case 'info':
+					toastr.info(message);
+					break;
+				case 'warning':
+					toastr.warning(message);
+					break;
+				case 'danger':
+					toastr.error(message);
+					break;
+			}
+		@endif
+	</script>
+	
+
+
 </body>
 
 </html>

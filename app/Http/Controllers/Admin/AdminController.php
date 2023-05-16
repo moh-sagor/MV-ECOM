@@ -71,9 +71,17 @@ class AdminController extends Controller
             $find->password = Hash::make($request->new_password);
             //Update Password
             $find->update();
-            return back()->with('success', 'Password Change Successfully');
+            $notice = array(
+                'message' => 'Password Change Successfully',
+                'type' => 'info'
+            );
+            return back()->with($notice);
         } else {
-            return back()->with('error', 'Old Password Does Not Match');
+            $notice = array(
+                'message' => 'Old Password Does Not Match',
+                'type' => 'warning'
+            );
+            return back()->with($notice);
         }
     }
 }
