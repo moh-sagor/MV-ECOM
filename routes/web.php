@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
 });
 
 Route::get('/dashboard', function () {
@@ -46,7 +46,15 @@ Route::get('admin/login', [AdminController::class, 'login'])->name('admin.login'
 
 Route::middleware('auth', 'role:vendor')->group(function () {
     Route::get('vendor/dashboard', [VendorController::class, 'index'])->name('vendor.dashboard');
+    Route::post('vendor/logout', [VendorController::class, 'logout'])->name('vendor.logout');
+    Route::get('vendor/profile', [VendorController::class, 'profile'])->name('vendor.profile');
+    Route::get('vendor/change/password', [VendorController::class, 'changePassword'])->name('vendor.change.password');
+    Route::post('vendor/update/password', [VendorController::class, 'updatePassword'])->name('vendor.update.password');
+    Route::post('vendor/update/profile', [VendorController::class, 'updateprofile'])->name('vendor.update.profile');
 });
+
+Route::get('vendor/login', [VendorController::class, 'login'])->name('vendor.login');
+
 
 
 
