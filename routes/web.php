@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 
 //////////////////////Vendor////////////////
 use App\Http\Controllers\Vendor\VendorController;
+use App\Http\Controllers\User\UserController;
 
 
 use App\Http\Controllers\ProfileController;
@@ -15,14 +16,18 @@ Route::get('/', function () {
     return view('frontend.index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+///////////////////////////////////////////////////
+// User Routes//
+///////////////////////////////////////////////////
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
+    Route::post('/dashboard/profile/update', [UserController::class, 'updateuser'])->name('user.updateuser');
+    Route::get('/dashboard/user/logout', [UserController::class, 'userlogout'])->name('user.logout');
 });
 
 ///////////////////////////////////////////////////
