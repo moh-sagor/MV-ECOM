@@ -154,7 +154,8 @@
                             </div>
                             <div class="header-action-icon-2">
                                 <a href="page-account.html">
-                                    <img class="svgInject" alt="Nest" src="{{ asset('frontend') }}/assets/imgs/theme/icons/icon-user.svg" />
+                                    {{-- <img class="svgInject" alt="Nest" src="{{ asset('frontend') }}/assets/imgs/theme/icons/icon-user.svg" /> --}}
+                                    <img class="svgInject rounded-circle" src="{{(!empty($userData->profile_pic)) ? asset('uploads/user/'.$userData->profile_pic) : asset('uploads/user/user.jpg')}}" alt="" >
                                 </a>
 
                                 @auth
