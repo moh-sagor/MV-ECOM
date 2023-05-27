@@ -1,12 +1,13 @@
 <?php
 ////////////////////////Admin////////////////
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BrandController;
 
 //////////////////////Vendor////////////////
 use App\Http\Controllers\Vendor\VendorController;
+
+
 use App\Http\Controllers\User\UserController;
-
-
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,12 @@ Route::middleware('auth', 'role:admin')->group(function () {
     Route::get('admin/change/password', [AdminController::class, 'changePassword'])->name('admin.change.password');
     Route::post('admin/update/password', [AdminController::class, 'updatePassword'])->name('admin.update.password');
     Route::post('admin/update/profile', [AdminController::class, 'updateprofile'])->name('admin.update.profile');
+
+    Route::controller(BrandController::class)->group(function () {
+        Route::get('/Brand/add', 'index')->name('brand.add');
+        Route::post('/Brand/store', 'store')->name('brand.store');
+    });
+
 });
 
 Route::get('admin/login', [AdminController::class, 'login'])->name('admin.login');
