@@ -108,8 +108,6 @@
 		@endif
 	</script>
 	
-
-
 </body>
 
 </html>

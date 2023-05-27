@@ -46,6 +46,7 @@ Route::middleware('auth', 'role:admin')->group(function () {
     Route::controller(BrandController::class)->group(function () {
         Route::get('/Brand/add', 'index')->name('brand.add');
         Route::post('/Brand/store', 'store')->name('brand.store');
+        Route::get('/Brand/manage', 'manage')->name('brand.manage');
     });
 
 });

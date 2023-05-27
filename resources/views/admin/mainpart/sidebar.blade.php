@@ -27,7 +27,7 @@
             <ul>
                 <li> <a href="{{route('brand.add')}}"><i class="bx bx-right-arrow-alt"></i>Add Brand</a>
                 </li>
-                <li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>Manage Brand</a>
+                <li> <a href="{{route('brand.manage')}}"><i class="bx bx-right-arrow-alt"></i>Manage Brand</a>
                 </li>
             </ul>
         </li>

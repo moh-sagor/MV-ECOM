@@ -39,4 +39,9 @@ class BrandController extends Controller
         );
         return back()->with($notice);
     }
+    public function manage()
+    {
+        $brands = Brand::all();
+        return view('admin.brand.manage', compact('brands'));
+    }
 }
