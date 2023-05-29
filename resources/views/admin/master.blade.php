@@ -73,6 +73,9 @@
 	<script src="{{asset('backend')}}/assets/plugins/jquery-knob/jquery.knob.js"></script>
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 	  <script>
 		  $(function() {
 			  $(".knob").knob();
@@ -91,6 +94,13 @@
 		@if(Session::has('message'))
 			var type = "{{ Session::get('type') }}";
 			var message = "{{ Session::get('message') }}";
+			toastr.options={
+				"closeButton": true,
+				"newestOnTop": true,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": false,
+			}
 	
 			switch (type) {
 				case 'success':
@@ -108,6 +118,35 @@
 			}
 		@endif
 	</script>
+
+
+<script>
+
+	jQuery(function(){
+		jQuery(document).on('click','#delete',function(e){
+			e.preventDefault();
+			var link = jQuery(this).attr("href");
+			Swal.fire({
+				title: 'Are you sure?',
+				text: "You won't be able to revert this!",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes, delete it!'
+				}).then((result) => {
+				if (result.isConfirmed) {
+					window.location.href = link;
+					Swal.fire(
+					'Deleted!',
+					'Your file has been deleted.',
+					'success'
+					)
+				}
+				});
+				});
+	});
+</script>
 	
 </body>
 
