@@ -47,20 +47,20 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($brands as $key => $brand)
-                                            <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td>{{ $brand->brand_name }}</td>
-                                                <td>{{ $brand->brand_slug }}</td>
-                                                <td>
-                                                    <img src="{{ asset('uploads/brand/'.$brand->brand_image) }}" alt="" style="width: 70px; height: 70px;">
-                                                </td>
-                                                <td>{{ $brand->brand_status }}</td>
-                                                <td>
-                                                    <a class="btn btn-info btn-sm" href="{{ route('brand.edit', $brand->id) }}"><i class="fas fa-edit"></i></a>
-                                                    <a class="btn btn-danger btn-sm" id="delete" href="{{ route('brand.delete', $brand->id) }}"><i class="fas fa-trash"></i></a>                                        
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $brand->brand_name }}</td>
+                                <td>{{ $brand->brand_slug }}</td>
+                                <td>
+                                    <img src="{{ asset('uploads/brand/'.$brand->brand_image) }}" alt="" style="width: 70px; height: 70px;">
+                                </td>
+                                <td>{{ $brand->brand_status }}</td>
+                                <td>
+                                    <a class="btn btn-info btn-sm" href="{{ route('brand.edit', $brand->id) }}"><i class="fas fa-edit"></i></a>
+                                    <a class="btn btn-danger btn-sm" id="delete" href="{{ route('brand.delete', $brand->id) }}"><i class="fas fa-trash"></i></a>                                        
+                                </td>
+                            </tr>
+                        @endforeach
 
                                 </tbody>
                                 <tfoot>

@@ -50,6 +50,7 @@ Route::middleware('auth', 'role:admin')->group(function () {
         Route::get('/Brand/edit/{id}', 'edit')->name('brand.edit');
         Route::post('/Brand/update/{id}', 'update')->name('brand.update');
         Route::get('/Brand/delete/{id}', 'delete')->name('brand.delete');
+
     });
 
 });

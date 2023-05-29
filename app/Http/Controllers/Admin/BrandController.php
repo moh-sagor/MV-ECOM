@@ -71,11 +71,9 @@ class BrandController extends Controller
         $request->validate(
             [
                 'brand_name' => 'required',
-                'brand_image' => 'required',
             ],
             [
                 'brand_name.required' => 'Please Enter Brand Name',
-                'brand_image.required' => 'Please Select Brand Image',
             ]
         );
         $brand = Brand::find($id);
@@ -95,4 +93,5 @@ class BrandController extends Controller
         );
         return back()->with($notice);
     }
+
 }

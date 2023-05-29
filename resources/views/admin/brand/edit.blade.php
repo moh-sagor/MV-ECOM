@@ -90,16 +90,10 @@ jQuery(document).ready(function(){
             brand_name: {
                 required: true,
             },
-            brand_image: {
-                required: true,
-            },
         },
         messages: {
             brand_name: {
                 required: "Please enter brand name",
-        },
-            brand_image: {
-                required: "Please select brand image",
         },
     },
         errorElement: 'span',
