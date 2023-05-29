@@ -72,6 +72,7 @@
 	<script src="{{asset('backend')}}/assets/plugins/jquery-knob/excanvas.js"></script>
 	<script src="{{asset('backend')}}/assets/plugins/jquery-knob/jquery.knob.js"></script>
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 	  <script>
 		  $(function() {
 			  $(".knob").knob();

@@ -34,24 +34,22 @@
                 <div class="col-lg-8 offset-lg-2">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('brand.store')}}" method="POST" enctype="multipart/form-data">
+                            <form class="form" action="{{ route('brand.store')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                             <div class="row mb-3">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Brand Name</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
+                                <div class="col-sm-9 msg text-secondary">
                                     <input type="text" name="brand_name" id="brand_name" class="form-control" placeholder="Enter Brand Name"  />
-                                    @error('brand_name')
-                                    <span class="text-danger">{{$message}}</span>
-                                    @enderror
+                                    
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Brand Logo</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
+                                <div class="col-sm-9 msg text-secondary">
                                     <input type="file" name="brand_image" class="form-control brand_image" />
                                     <img id="imagepre" class="mt-2" src="{{asset('uploads/empty.png')}}" alt="" height="120" width="120" >
                                 </div>
@@ -82,6 +80,43 @@
             filereader.readAsDataURL(e.target.files['0']);
         })
     })
+</script>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    jQuery('.form').validate({
+        rules: {
+            brand_name: {
+                required: true,
+            },
+            brand_image: {
+                required: true,
+            },
+        },
+        messages: {
+            brand_name: {
+                required: "Please enter brand name",
+        },
+            brand_image: {
+                required: "Please select brand image",
+        },
+    },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.msg').append(error);
+        },
+        highlight:function(element,errorClass,validClass){
+            jQuery('.is-invalid').removeClass('is-invalid');
+            jQuery(element).addClass('is-invalid');
+        },
+        unhighlight:function(element,errorClass,validClass){
+            jQuery('.is-invalid').removeClass('is-invalid');
+            jQuery(element).addClass('is-valid');
+        }
+    });
+});
+
 </script>
 
 

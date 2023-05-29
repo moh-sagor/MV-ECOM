@@ -9,6 +9,7 @@ use File;
 use Illuminate\Support\Str;
 use App\Models\Brand;
 
+
 class BrandController extends Controller
 {
     public function index()
@@ -17,10 +18,17 @@ class BrandController extends Controller
     }
     public function store(Request $request)
     {
-        $request->validate([
-            'brand_name' => 'required',
-            'brand_image' => 'required',
-        ]);
+        $request->validate(
+            [
+                'brand_name' => 'required',
+                'brand_image' => 'required',
+            ],
+            [
+                'brand_name.required' => 'Please Enter Brand Name',
+                'brand_image.required' => 'Please Select Brand Image',
+            ]
+        );
+
         $brand = new Brand;
         $brand->brand_name = $request->brand_name;
         $brand->brand_slug = Str::slug($request->brand_name);
