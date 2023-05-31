@@ -4,13 +4,13 @@
 <div class="page-content"> 
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Manage Brand</div>
+        <div class="breadcrumb-title pe-3">Manage Category</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Manage All Brand</li>
+                    <li class="breadcrumb-item active" aria-current="page">Manage All Category</li>
                 </ol>
             </nav>
         </div>
@@ -38,27 +38,27 @@
                                 <thead>
                                     <tr>
                                         <th>#sl</th>
-                                        <th>Brand Name</th>
-                                        <th>Brand Slug</th>
-                                        <th>Brand Image</th>
+                                        <th>Category Name</th>
+                                        <th>Category Slug</th>
+                                        <th>Category Image</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(count($brands)>0)
-                                    @foreach ($brands as $key => $brand)
+                                    @if(count($categories)>0)
+                                    @foreach ($categories as $key => $category)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $brand->brand_name }}</td>
-                                <td>{{ $brand->brand_slug }}</td>
+                                <td>{{ $category->category_name }}</td>
+                                <td>{{ $category->category_slug }}</td>
                                 <td>
-                                    <img src="{{ asset('uploads/brand/'.$brand->brand_image) }}" alt="" style="width: 70px; height: 70px;">
+                                    <img src="{{ asset('uploads/category/'.$category->category_image) }}" alt="" style="width: 70px; height: 70px;">
                                 </td>
-                                <td>{{ $brand->brand_status }}</td>
+                                <td>{{ $category->brand_status }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-sm" href="{{ route('brand.edit', $brand->id) }}"><i class="fas fa-edit"></i></a>
-                                    <a class="btn btn-danger btn-sm" id="delete" href="{{ route('brand.delete', $brand->id) }}"><i class="fas fa-trash"></i></a>                                        
+                                    <a class="btn btn-info btn-sm" href="{{ route('category.edit', $category->id) }}"><i class="fas fa-edit"></i></a>
+                                    <a class="btn btn-danger btn-sm" id="delete" href="{{ route('category.delete', $category->id) }}"><i class="fas fa-trash"></i></a>                                        
                                 </td>
                             </tr>
                         @endforeach
@@ -74,9 +74,9 @@
                                 <tfoot>
                                     <tr>
                                         <th>#sl</th>
-                                        <th>Brand Name</th>
-                                        <th>Brand Slug</th>
-                                        <th>Brand Image</th>
+                                        <th>Category Name</th>
+                                        <th>Category Slug</th>
+                                        <th>Category Image</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>

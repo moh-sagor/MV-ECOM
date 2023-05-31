@@ -4,13 +4,13 @@
 <div class="page-content"> 
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Brand</div>
+        <div class="breadcrumb-title pe-3">Category</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Update Brand</li>
+                    <li class="breadcrumb-item active" aria-current="page">Update Category</li>
                 </ol>
             </nav>
         </div>
@@ -34,31 +34,31 @@
                 <div class="col-lg-8 offset-lg-2">
                     <div class="card">
                         <div class="card-body">
-                            <form class="form" action="{{ route('brand.update', ['id' => $brand->id]) }}" method="POST" enctype="multipart/form-data">
+                            <form class="form" action="{{ route('category.update', ['id' => $category->id]) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Brand Name</h6>
+                                    <h6 class="mb-0">Category Name</h6>
                                 </div>
                                 <div class="col-sm-9 msg text-secondary">
-                                    <input type="text" name="brand_name" id="brand_name" class="form-control" value="{{$brand->brand_name}}"  />
+                                    <input type="text" name="category_name" id="category_name" class="form-control" value="{{$category->category_name}}"  />
                                     
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Brand Logo</h6>
+                                    <h6 class="mb-0">Category Logo</h6>
                                 </div>
                                 <div class="col-sm-9 msg text-secondary">
-                                    <input type="file" name="brand_image" class="form-control brand_image" />
-                                    <img id="imagepre" class="mt-2" src="{{ !empty(asset('uploads/brand/'.$brand->brand_image)) ? asset('uploads/brand/'.$brand->brand_image) : asset('uploads/empty.png')  }}" alt="" height="120" width="120" >
+                                    <input type="file" name="category_image" class="form-control category_image" />
+                                    <img id="imagepre" class="mt-2" src="{{ !empty(asset('uploads/category/'.$category->category_image)) ? asset('uploads/category/'.$category->category_image) : asset('uploads/empty.png')  }}" alt="" height="120" width="120" >
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="submit" class="btn btn-primary px-4" value="Update Brand" />
+                                    <input type="submit" class="btn btn-primary px-4" value="Update Category" />
                                 </div>
                             </div>
                         </form>
@@ -73,7 +73,7 @@
 <script>
     'use strict'
     jQuery(document).ready(function(){
-        jQuery('.brand_image').change(function(e){
+        jQuery('.category_image').change(function(e){
             var filereader = new FileReader();
             filereader.onload = function(e) {
                 jQuery('#imagepre').attr('src', e.target.result);
@@ -89,16 +89,16 @@
 jQuery(document).ready(function(){
     jQuery('.form').validate({
         rules: {
-            brand_name: {
+            category_name: {
                 required: true,
             },
         },
         messages: {
-            brand_name: {
-                required: "Please enter brand name",
+            category_name: {
+                required: "Please enter category name",
         },
-        brand_image: {
-                required: "Please select brand image",
+        category_image: {
+                required: "Please select category image",
         },
     },
         errorElement: 'span',

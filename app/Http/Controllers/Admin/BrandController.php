@@ -68,30 +68,35 @@ class BrandController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $request->validate(
-            [
-                'brand_name' => 'required',
-            ],
-            [
-                'brand_name.required' => 'Please Enter Brand Name',
-            ]
-        );
+
         $brand = Brand::find($id);
-        $brand->brand_name = $request->brand_name;
-        $brand->brand_slug = Str::slug($request->brand_name);
-        if ($request->hasFile('brand_image')) {
+        if ($request->brand_image) {
+            if (File::exists(public_path('uploads/brand/' . $brand->brand_image))) {
+                File::delete(public_path('uploads/brand/' . $brand->brand_image));
+            }
             $image = $request->file('brand_image');
             $custom_name = time() . '.' . $image->getClientOriginalExtension();
             $image_path = public_path('uploads/brand/' . $custom_name);
             Image::make($image)->fit(100, 100)->save($image_path);
             $brand->brand_image = $custom_name;
+            $brand->brand_name = $request->brand_name;
+            $brand->brand_slug = Str::slug($request->brand_name);
+            $brand->update();
+            $notice = array(
+                'message' => 'Brand Updated Successfully',
+                'type' => 'success'
+            );
+            return redirect()->route('brand.manage')->with($notice);
+        } else {
+            $brand->brand_name = $request->brand_name;
+            $brand->brand_slug = Str::slug($request->brand_name);
+            $brand->update();
+            $notice = array(
+                'message' => 'Brand Updated Successfully',
+                'type' => 'success'
+            );
+            return redirect()->route('brand.manage')->with($notice);
         }
-        $brand->update();
-        $notice = array(
-            'message' => 'Brand Updated Successfully',
-            'type' => 'success'
-        );
-        return back()->with($notice);
-    }
 
+    }
 }

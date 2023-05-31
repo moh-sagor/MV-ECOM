@@ -31,6 +31,32 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Category</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('category.add')}}"><i class="bx bx-right-arrow-alt"></i>Add Category</a>
+                </li>
+                <li> <a href="{{route('category.manage')}}"><i class="bx bx-right-arrow-alt"></i>Manage Category</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Sub Category</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('subcategory.add')}}"><i class="bx bx-right-arrow-alt"></i>Add SubCategory</a>
+                </li>
+                <li> <a href="{{route('subcategory.manage')}}"><i class="bx bx-right-arrow-alt"></i>Manage SubCategory</a>
+                </li>
+            </ul>
+        </li>
     
     </ul>
     <!--end navigation-->

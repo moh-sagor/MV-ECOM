@@ -90,6 +90,7 @@
 	<!--app JS-->
 	<script src="{{asset('backend')}}/assets/js/app.js"></script>
 
+	{{-- toastr  --}}
 	<script>
 		@if(Session::has('message'))
 			var type = "{{ Session::get('type') }}";
@@ -119,7 +120,7 @@
 		@endif
 	</script>
 
-
+ {{-- Sweet Allert  --}}
 <script>
 
 	jQuery(function(){
